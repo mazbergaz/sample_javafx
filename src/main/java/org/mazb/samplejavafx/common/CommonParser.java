@@ -44,13 +44,15 @@ public class CommonParser {
             try {
                 Object val = field.get(obj);
                 if(val!=null){
-                    strbuf.append(i>0 ? "&" : "");
                     if(val instanceof Date){
                         val = ((Date)val).getTime();
                     }
-                    strbuf.append(field.getName());
-                    strbuf.append("=");
-                    strbuf.append(val);
+                    if(!((val instanceof Long && ((Long)val).longValue()==0) || (val instanceof Integer && ((Integer)val).intValue()==0))){
+                        strbuf.append(i>0 && !strbuf.toString().isEmpty() ? "&" : "");
+                        strbuf.append(field.getName());
+                        strbuf.append("=");
+                        strbuf.append(val);
+                    }
                 }
                 
             } catch (Exception ex) {

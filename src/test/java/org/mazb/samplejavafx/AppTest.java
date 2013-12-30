@@ -18,7 +18,7 @@ public class AppTest extends TestCase {
     private User getUser(){
         User u = new User();
         u.setId(8);
-        u.setCreatedOn(new Date());
+        u.setCreatedOn(new Date().getTime());
         u.setEmail("em@i.l");
         u.setPassword("pass");
         u.setRealName("real");
@@ -31,18 +31,16 @@ public class AppTest extends TestCase {
         User u = getUser();
         
         String res = CommonParser.parseToJson(u);
-        assertTrue(res.equals("{\"id\":8,\"userName\":\"username\","
-                + "\"realName\":\"real\",\"email\":\"em@i.l\","
-                + "\"password\":\"pass\",\"createdOn\":"+u.getCreatedOn().getTime()+","
-                + "\"lastModified\":null}"));
-        
+        assertTrue(res.equals("{\"id\":8,\"userName\":\"username\""
+                + ",\"realName\":\"real\",\"password\":\"pass\""
+                + ",\"email\":\"em@i.l\",\"roleDto\":null"
+                + ",\"createdBy\":null,\"createdOn\":"+u.getCreatedOn()
+                + ",\"modifiedBy\":null,\"lastModified\":0}"));
         assertTrue(u.equals(CommonParser.parseJsonToObject(res, User.class)));
         
         res = CommonParser.parseToQueryString(u);
         assertTrue(res.equals("id=8&userName=username&realName=real"
-                + "&email=em@i.l&password=pass&createdOn="+u.getCreatedOn().getTime()));
-        
-        System.out.println(CommonParser.parseToQueryString(new User("abc", "abc123")));
+                + "&password=pass&email=em@i.l&createdOn="+u.getCreatedOn()));
         
     }
     
