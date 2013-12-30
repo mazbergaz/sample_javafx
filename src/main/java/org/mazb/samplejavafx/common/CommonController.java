@@ -1,5 +1,6 @@
 package org.mazb.samplejavafx.common;
 
+import org.mazb.samplejavafx.app.Context;
 import java.io.IOException;
 import java.util.logging.Logger;
 import javafx.fxml.FXMLLoader;

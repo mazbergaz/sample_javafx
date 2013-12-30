@@ -1,4 +1,4 @@
-package org.mazb.samplejavafx.common;
+package org.mazb.samplejavafx.app;
 
 import java.util.HashMap;
 import java.util.Map;

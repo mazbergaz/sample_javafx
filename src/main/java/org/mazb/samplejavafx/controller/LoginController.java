@@ -11,7 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import org.mazb.samplejavafx.common.CommonConstant;
 import org.mazb.samplejavafx.common.CommonController;
-import org.mazb.samplejavafx.common.Context;
+import org.mazb.samplejavafx.app.Context;
 import org.mazb.samplejavafx.model.User;
 
 /**

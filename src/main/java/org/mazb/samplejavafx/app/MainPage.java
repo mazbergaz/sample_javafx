@@ -1,4 +1,4 @@
-package org.mazb.samplejavafx.main;
+package org.mazb.samplejavafx.app;
 
 import java.io.IOException;
 import java.util.logging.Level;
