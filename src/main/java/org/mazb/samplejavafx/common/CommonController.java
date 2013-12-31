@@ -16,7 +16,7 @@ import org.mazb.samplejavafx.util.RestClient;
 public abstract class CommonController implements Initializable {
     
     public final Logger LOGGER = Logger.getLogger(this.getClass().getName());
-    private static final String UI_BASE_LOCATION = "/org/mazb/samplejavafx/ui/";
+    private static final String UI_BASE_LOCATION = "/pages/";
     private static final String FXML_PREFIX = ".fxml";
     
     private RestClient restClient = new RestClient();
