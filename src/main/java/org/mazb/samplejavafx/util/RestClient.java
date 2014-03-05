@@ -15,7 +15,7 @@ import org.mazb.samplejavafx.common.CommonParser;
  */
 public class RestClient {
     
-    private static final String BASE_URL = "http://nostra-soa-local:9090/sampleserver";
+    private static final String BASE_URL = "http://dev.mazbergaz.org:9090/sampleserver";
     private static final Logger LOGGER = Logger.getLogger(RestClient.class.getName());
     
     /**
