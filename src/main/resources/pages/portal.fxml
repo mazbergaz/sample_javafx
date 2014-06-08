@@ -7,7 +7,7 @@
 <?import javafx.scene.text.*?>
 
 <BorderPane fx:controller="org.mazb.samplejavafx.controller.PortalController" 
-          xmlns:fx="http://javafx.com/fxml">
+          xmlns:fx="http://javafx.com/fxml" fx:id="root">
     
     <padding>
         <Insets top="25" right="25" bottom="10" left="25"/>
@@ -15,24 +15,15 @@
     
     <stylesheets>
         <URL value="@/css/login.css" />
+        <URL value="@/css/submenu.css" />
     </stylesheets>
-    
-<!--    <fx:define>
-        <fx:include source="menu.fxml" fx:id="menuContent" />
-        <fx:include source="submenu.fxml" fx:id="submenuContent" />
-        <fx:include source="content.fxml" fx:id="contentContent"/>
-   </fx:define>-->
     
     <top>
         <MenuBar fx:id="menuBar"/>
     </top>
     
-<!--    <center>
-        <Content fx:id="contentPart" content="$contentContent" closable="false"/>
-    </center>-->
-    
     <bottom>
-        <Label fx:id="labelApa" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+        <Label text="mazbergaz@gmail.com - sample javafx 2014" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
     </bottom>
 
 </BorderPane>

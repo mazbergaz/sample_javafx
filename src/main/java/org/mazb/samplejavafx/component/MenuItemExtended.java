@@ -9,8 +9,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
+import javafx.scene.layout.BorderPane;
 import org.mazb.samplejavafx.common.CommonController;
 
 /**
@@ -50,11 +52,12 @@ public class MenuItemExtended extends MenuItem {
         return this;
     }
     
-    public MenuItemExtended setOnRedirectContent(final String redirectContent){
+    public MenuItemExtended setOnRedirectContent(final String redirectContent, final BorderPane rootPane){
         super.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent t) {
                 try {
-                    CommonController.setScene(redirectContent);
+                    Parent view = CommonController.getParent(redirectContent);
+                    rootPane.setCenter(view);
                 } catch (IOException ex) {
                     Logger.getLogger(MenuItemExtended.class.getName()).log(Level.SEVERE, null, ex);
                 }

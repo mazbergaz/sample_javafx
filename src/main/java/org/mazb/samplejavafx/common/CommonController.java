@@ -29,7 +29,7 @@ public abstract class CommonController implements Initializable {
     public static Parent setScene(String pageName) throws IOException {
         Stage currentStage = Context.getInstance().getCurrentStage();
         Scene scene = currentStage.getScene();
-        Parent page = (Parent) FXMLLoader.load(CommonController.class.getResource(UI_BASE_LOCATION + pageName + FXML_PREFIX));
+        Parent page = getParent(pageName);
         if (scene == null) {
             scene = new Scene(page);
             currentStage.setScene(scene);
@@ -42,6 +42,10 @@ public abstract class CommonController implements Initializable {
         currentStage.centerOnScreen();
         currentStage.show();
         return page;
+    }
+    
+    public static Parent getParent(String pageName) throws IOException{
+        return (Parent) FXMLLoader.load(CommonController.class.getResource(UI_BASE_LOCATION + pageName + FXML_PREFIX));
     }
     
     public RestClient getRestClient(){
