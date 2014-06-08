@@ -79,6 +79,19 @@ public class RestClient {
         return result;
     }
     
+    public boolean isConnectionOk(){
+        boolean result = false;
+        try {
+            URL obj = new URL(BASE_URL);
+            HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+            int responseCode = con.getResponseCode();
+            result = responseCode > 100 && responseCode < 300;
+        } catch (IOException ex) {
+            LOGGER.log(Level.WARNING, ex.getMessage());
+        }
+        return result;
+    }
+    
     public Object get(Object object){
         Object result = null;
         

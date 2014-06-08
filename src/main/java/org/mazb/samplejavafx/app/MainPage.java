@@ -19,7 +19,7 @@ public class MainPage extends Application {
     @Override
     public void start(Stage stage){
         try {
-            CommonController.setSceneContentStartup(stage);
+            CommonController.setSceneStartup(stage);
         } catch (IOException ex) {
             Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
         }

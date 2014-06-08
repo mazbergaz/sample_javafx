@@ -1,6 +1,8 @@
 package org.mazb.samplejavafx;
 
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import junit.framework.TestCase;
 import org.junit.Test;
 import org.mazb.samplejavafx.common.CommonConstant;
@@ -46,10 +48,14 @@ public class AppTest extends TestCase {
     
     @Test
     public void testHttpConnection(){
-        Object obj = restClient.postFormData(new User("mazbergaz", "bergas123"), CommonConstant.RestOperationPath.VALIDATE_USER);
-        assertTrue(obj!=null && obj instanceof User && ((User)obj).getUserName().equals("mazbergaz"));
-        Object obj2 = restClient.postFormData(new User("mazbergaz", "bergas13"), CommonConstant.RestOperationPath.VALIDATE_USER);
-        assertTrue(obj2==null);
+        if(restClient.isConnectionOk()){
+            Object obj = restClient.postFormData(new User("mazbergaz", "bergas123"), CommonConstant.RestOperationPath.VALIDATE_USER);
+            assertTrue(obj!=null && obj instanceof User && ((User)obj).getUserName().equals("mazbergaz"));
+            Object obj2 = restClient.postFormData(new User("mazbergaz", "bergas13"), CommonConstant.RestOperationPath.VALIDATE_USER);
+            assertTrue(obj2==null);
+        }else{
+            Logger.getLogger(this.getClass().getName()).log(Level.WARNING, "there's no connection to server. skip test.");
+        }
     }
     
 }
