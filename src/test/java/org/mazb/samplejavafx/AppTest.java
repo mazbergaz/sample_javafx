@@ -1,12 +1,17 @@
 package org.mazb.samplejavafx;
 
+import java.io.File;
+import java.net.URL;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import junit.framework.TestCase;
+import org.apache.commons.lang.StringUtils;
 import org.junit.Test;
 import org.mazb.samplejavafx.common.CommonConstant;
 import org.mazb.samplejavafx.common.CommonParser;
+import org.mazb.samplejavafx.model.Menu;
+import org.mazb.samplejavafx.model.Menus;
 import org.mazb.samplejavafx.model.User;
 import org.mazb.samplejavafx.util.RestClient;
 
@@ -44,6 +49,13 @@ public class AppTest extends TestCase {
         assertTrue(res.equals("id=8&userName=username&realName=real"
                 + "&password=pass&email=em@i.l&createdOn="+u.getCreatedOn()));
         
+    }
+    
+    @Test
+    public void testJsonPropertiesReader(){
+        String fileLoc = getClass().getResource("/setup/menu.json").getFile();
+        Menus menus = (Menus) CommonParser.parseJsonToObject(new File(fileLoc), Menus.class);
+        assertTrue(StringUtils.equals(menus.getMenus().get(1).getTitle(), "User"));
     }
     
     @Test

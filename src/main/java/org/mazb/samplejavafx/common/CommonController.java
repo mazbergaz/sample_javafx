@@ -1,5 +1,6 @@
 package org.mazb.samplejavafx.common;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.logging.Logger;
 import javafx.fxml.FXMLLoader;
@@ -7,7 +8,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.apache.commons.lang.StringUtils;
 import org.mazb.samplejavafx.app.Context;
+import org.mazb.samplejavafx.model.Menus;
 import org.mazb.samplejavafx.util.RestClient;
 
 /**
@@ -50,6 +53,11 @@ public abstract class CommonController implements Initializable {
     
     public RestClient getRestClient(){
         return restClient;
+    }
+    
+    public Object readJsonPropertiesReader(String fileName, Class clz){
+        String fileLoc = getClass().getResource(fileName).getFile();
+        return CommonParser.parseJsonToObject(new File(fileLoc), clz);
     }
     
 }

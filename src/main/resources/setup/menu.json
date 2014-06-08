@@ -1,0 +1,50 @@
+{
+   "menus":[
+      {
+         "title":"File",
+         "items":[
+            {
+               "itemTitle":"Exit",
+               "action":"redirect-scene=login"
+            }
+         ],
+         "roles":[
+            "admin",
+            "manager"
+         ]
+      },
+      {
+         "title":"User",
+         "items":[
+            {
+               "itemTitle":"Show User",
+               "action":"redirect-content=subcontent/usershow"
+            },
+            {
+               "itemTitle":"Add User",
+               "action":"redirect-content=subcontent/useradd"
+            }
+         ],
+         "roles":[
+            "admin"
+         ]
+      },
+      {
+         "title":"Other",
+         "items":[
+            {
+               "itemTitle":"Kampret Ciganea",
+               "action":"redirect-content=subcontent/kampretciganea"
+            },
+            {
+               "itemTitle":"Pler Ktkuk",
+               "action":"redirect-content=subcontent/plerktkuk"
+            }
+         ],
+         "roles":[
+            "admin",
+            "manager"
+         ]
+      }
+   ]
+}

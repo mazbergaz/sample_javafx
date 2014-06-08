@@ -14,6 +14,7 @@
         <javafx.version>2.2</javafx.version>
         <javafx.runtime.lib.jar>/Library/Java/JavaVirtualMachines/jdk1.7.0_45.jdk/Contents/Home/jre/lib/ext/jfxrt.jar</javafx.runtime.lib.jar>
         <jackson.version>1.9.12</jackson.version>
+        <commonlang.version>2.6</commonlang.version>
     </properties>
 
     <dependencies>
@@ -39,6 +40,12 @@
             <groupId>org.codehaus.jackson</groupId>
             <artifactId>jackson-mapper-asl</artifactId>
             <version>${jackson.version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>${commonlang.version}</version>
         </dependency>
 
     </dependencies>

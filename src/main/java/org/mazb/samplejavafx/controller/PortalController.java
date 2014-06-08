@@ -5,14 +5,18 @@
 package org.mazb.samplejavafx.controller;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.regex.Pattern;
 import javafx.fxml.FXML;
-import javafx.scene.control.MenuBar;
-import org.mazb.samplejavafx.common.CommonController;
-
 import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
 import javafx.scene.layout.BorderPane;
+import org.apache.commons.lang.StringUtils;
+import org.mazb.samplejavafx.common.CommonController;
 import org.mazb.samplejavafx.component.MenuItemExtended;
+import org.mazb.samplejavafx.model.Item;
+import org.mazb.samplejavafx.model.Menus;
 
 /**
  *
@@ -29,19 +33,29 @@ public class PortalController extends CommonController{
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-        Menu menuFile = new Menu("File");
-        menuFile.getItems().add(new MenuItemExtended("Exit").setOnRedirectScene("login"));
+        setMenu();
         
-        Menu menuUser = new Menu("User");
-        menuUser.getItems().add(new MenuItemExtended("Show User").setOnRedirectContent("subcontent/usershow", root));
-        menuUser.getItems().add(new MenuItemExtended("Add User").setOnRedirectContent("subcontent/useradd", root));
-        
-        Menu menuOther = new Menu("Other");
-        menuOther.getItems().add(new MenuItemExtended("Kampret Ciganea").setOnRedirectContent("subcontent/kampretciganea", root));
-        menuOther.getItems().add(new MenuItemExtended("Pler Ktkuk").setOnRedirectContent("subcontent/plerktkuk", root));
-        
-        menuBar.getMenus().addAll(menuFile, menuUser, menuOther);
-
+    }
+    
+    private void setMenu(){
+        Menus menus = (Menus) readJsonPropertiesReader("/setup/menu.json", Menus.class);
+        List<org.mazb.samplejavafx.model.Menu> listmenu = menus.getMenus();
+        Pattern pattern = Pattern.compile("=");
+        for(org.mazb.samplejavafx.model.Menu objMenu : listmenu){
+            Menu menu = new Menu(objMenu.getTitle());
+            List<Item> items = objMenu.getItems();
+            for(Item item : items){
+                String[] action = pattern.split(item.getAction());
+                MenuItemExtended menuitem = new MenuItemExtended(item.getItemTitle());
+                if(StringUtils.equals(action[0], "redirect-scene")){
+                    menuitem.setOnRedirectScene(action[1]);
+                }else if(StringUtils.equals(action[0], "redirect-content")){
+                    menuitem.setOnRedirectContent(action[1], root);
+                }
+                menu.getItems().add(menuitem);
+            }
+            menuBar.getMenus().add(menu);
+        }
     }
     
 }

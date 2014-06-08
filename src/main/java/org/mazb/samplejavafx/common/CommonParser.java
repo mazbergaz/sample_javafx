@@ -1,5 +1,6 @@
 package org.mazb.samplejavafx.common;
 
+import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.Date;
@@ -14,6 +15,16 @@ import org.mazb.samplejavafx.util.RestClient;
 public class CommonParser {
     
     private static ObjectMapper mapper = new ObjectMapper();
+    
+    public static Object parseJsonToObject(File jsonFile, Class cls){
+        Object result = null;
+        try {
+            result = mapper.readValue(jsonFile, cls);
+        } catch (IOException ex) {
+            Logger.getLogger(CommonParser.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return result;
+    }
     
     public static Object parseJsonToObject(String json, Class cls){
         Object result = null;
