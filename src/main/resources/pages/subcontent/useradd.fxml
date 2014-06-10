@@ -17,6 +17,25 @@
         <URL value="@/css/login.css" />
     </stylesheets>
     
-    <Label fx:id="labelPageName" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+<!--    <Label fx:id="labelPageName" GridPane.columnIndex="0" GridPane.rowIndex="1"/>-->
+    
+    <!-- form -->
+    <Label text="Real Name:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+    <TextField fx:id="realnameField" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+ 
+    <Label text="email:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+    <TextField fx:id="emailField" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+ 
+    <Label text="user name:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+    <TextField fx:id="usernameField" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+ 
+    <Label text="password:" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+    <TextField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+    
+    <HBox spacing="10" alignment="bottom_right" GridPane.columnIndex="1" GridPane.rowIndex="5">
+        <Button text="Add" onAction="#handleAddButtonAction"/>
+    </HBox>
+    
+    <Label fx:id="labelResult" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
 
 </GridPane>

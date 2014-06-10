@@ -15,8 +15,8 @@ import javafx.scene.layout.BorderPane;
 import org.apache.commons.lang.StringUtils;
 import org.mazb.samplejavafx.common.CommonController;
 import org.mazb.samplejavafx.component.MenuItemExtended;
-import org.mazb.samplejavafx.model.Item;
-import org.mazb.samplejavafx.model.Menus;
+import org.mazb.samplejavafx.util.model.Item;
+import org.mazb.samplejavafx.util.model.Menus;
 
 /**
  *
@@ -39,9 +39,9 @@ public class PortalController extends CommonController{
     
     private void setMenu(){
         Menus menus = (Menus) readJsonPropertiesReader("/setup/menu.json", Menus.class);
-        List<org.mazb.samplejavafx.model.Menu> listmenu = menus.getMenus();
+        List<org.mazb.samplejavafx.util.model.Menu> listmenu = menus.getMenus();
         Pattern pattern = Pattern.compile("=");
-        for(org.mazb.samplejavafx.model.Menu objMenu : listmenu){
+        for(org.mazb.samplejavafx.util.model.Menu objMenu : listmenu){
             Menu menu = new Menu(objMenu.getTitle());
             List<Item> items = objMenu.getItems();
             for(Item item : items){

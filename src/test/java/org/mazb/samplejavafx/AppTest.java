@@ -9,9 +9,9 @@ import junit.framework.TestCase;
 import org.apache.commons.lang.StringUtils;
 import org.junit.Test;
 import org.mazb.samplejavafx.common.CommonConstant;
-import org.mazb.samplejavafx.common.CommonParser;
-import org.mazb.samplejavafx.model.Menu;
-import org.mazb.samplejavafx.model.Menus;
+import org.mazb.samplejavafx.util.JsonParser;
+import org.mazb.samplejavafx.util.model.Menu;
+import org.mazb.samplejavafx.util.model.Menus;
 import org.mazb.samplejavafx.model.User;
 import org.mazb.samplejavafx.util.RestClient;
 
@@ -37,15 +37,15 @@ public class AppTest extends TestCase {
     public void testJsonParser(){
         User u = getUser();
         
-        String res = CommonParser.parseToJson(u);
+        String res = JsonParser.parseToJson(u);
         assertTrue(res.equals("{\"id\":8,\"userName\":\"username\""
                 + ",\"realName\":\"real\",\"password\":\"pass\""
                 + ",\"email\":\"em@i.l\",\"roleDto\":null"
                 + ",\"createdBy\":null,\"createdOn\":"+u.getCreatedOn()
                 + ",\"modifiedBy\":null,\"lastModified\":0}"));
-        assertTrue(u.equals(CommonParser.parseJsonToObject(res, User.class)));
+        assertTrue(u.equals(JsonParser.parseJsonToObject(res, User.class)));
         
-        res = CommonParser.parseToQueryString(u);
+        res = JsonParser.parseToQueryString(u);
         assertTrue(res.equals("id=8&userName=username&realName=real"
                 + "&password=pass&email=em@i.l&createdOn="+u.getCreatedOn()));
         
@@ -54,7 +54,7 @@ public class AppTest extends TestCase {
     @Test
     public void testJsonPropertiesReader(){
         String fileLoc = getClass().getResource("/setup/menu.json").getFile();
-        Menus menus = (Menus) CommonParser.parseJsonToObject(new File(fileLoc), Menus.class);
+        Menus menus = (Menus) JsonParser.parseJsonToObject(new File(fileLoc), Menus.class);
         assertTrue(StringUtils.equals(menus.getMenus().get(1).getTitle(), "User"));
     }
     

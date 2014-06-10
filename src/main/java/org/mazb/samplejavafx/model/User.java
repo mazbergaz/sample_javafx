@@ -2,6 +2,7 @@ package org.mazb.samplejavafx.model;
 
 import java.util.Date;
 import java.util.Objects;
+import java.util.regex.Pattern;
 
 /**
  * @author mazbergaz@gmail.com
@@ -178,6 +179,40 @@ public class User {
             return false;
         }
         return true;
+    }
+    
+    public String toCsvString(){
+        return id + ";" 
+                + userName + ";" 
+                + realName + ";" 
+                + password + ";" 
+                + email + ";" 
+                + (roleDto == null ? "" : roleDto.getCode()) + ";" 
+                + createdBy + ";" 
+                + createdOn + ";" 
+                + modifiedBy + ";" 
+                + lastModified;
+    }
+    
+    public static User fromCsvString(String csvString){
+        String[] props = Pattern.compile(";").split(csvString);
+        User user = new User();
+        user.setId(Integer.parseInt(props[0]));
+        user.setUserName(props[1]);
+        user.setRealName(props[2]);
+        user.setPassword(props[3]);
+        user.setEmail(props[4]);
+        user.setRoleDto(user.getRole(props[5]));
+        user.setCreatedBy(props[6]);
+        user.setCreatedOn(Long.parseLong(props[7]));
+        user.setModifiedBy(props[8]);
+        user.setLastModified(Long.parseLong(props[9]));
+        return user;
+    }
+    
+    private Role getRole(String roleCode){
+        System.out.println("find a way to get user role by role code");
+        return null;
     }
     
 }

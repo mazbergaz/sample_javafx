@@ -1,5 +1,6 @@
 package org.mazb.samplejavafx.common;
 
+import org.mazb.samplejavafx.util.JsonParser;
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.Logger;
@@ -9,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.mazb.samplejavafx.app.Context;
+import org.mazb.samplejavafx.util.FileHandler;
 import org.mazb.samplejavafx.util.RestClient;
 
 /**
@@ -19,6 +21,7 @@ public abstract class CommonController implements Initializable {
     public final Logger LOGGER = Logger.getLogger(this.getClass().getName());
     private static final String UI_BASE_LOCATION = "/pages/";
     private static final String FXML_PREFIX = ".fxml";
+    private static FileHandler fileHandler = new FileHandler();
     
     private RestClient restClient = new RestClient();
     
@@ -52,7 +55,11 @@ public abstract class CommonController implements Initializable {
     
     public Object readJsonPropertiesReader(String fileName, Class clz){
         String fileLoc = getClass().getResource(fileName).getFile();
-        return CommonParser.parseJsonToObject(new File(fileLoc), clz);
+        return JsonParser.parseJsonToObject(new File(fileLoc), clz);
+    }
+    
+    public FileHandler getFileHandler(){
+        return fileHandler;
     }
     
 }

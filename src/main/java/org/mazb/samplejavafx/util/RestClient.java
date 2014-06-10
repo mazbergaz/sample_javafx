@@ -8,7 +8,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.mazb.samplejavafx.common.CommonParser;
 
 /**
  * @author mazbergaz@gmail.com
@@ -25,8 +24,8 @@ public class RestClient {
      * @return 
      */
     public Object postJsonData(Object obj, String operationPath){
-        String response = post(CommonParser.parseToJson(obj), operationPath);
-        return response==null ? null : CommonParser.parseJsonToObject(response, obj.getClass());
+        String response = post(JsonParser.parseToJson(obj), operationPath);
+        return response==null ? null : JsonParser.parseJsonToObject(response, obj.getClass());
     }
     
     /**
@@ -36,8 +35,8 @@ public class RestClient {
      * @return 
      */
     public Object postFormData(Object obj, String operationPath){
-        String response = post(CommonParser.parseToQueryString(obj), operationPath);
-        return response==null ? null : CommonParser.parseJsonToObject(response, obj.getClass());
+        String response = post(JsonParser.parseToQueryString(obj), operationPath);
+        return response==null ? null : JsonParser.parseJsonToObject(response, obj.getClass());
     }
     
     private String post(String content, String operationPath){

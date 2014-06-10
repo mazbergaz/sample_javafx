@@ -1,4 +1,4 @@
-package org.mazb.samplejavafx.common;
+package org.mazb.samplejavafx.util;
 
 import java.io.File;
 import java.io.IOException;
@@ -12,7 +12,7 @@ import org.mazb.samplejavafx.util.RestClient;
 /**
  * @author mazbergaz@gmail.com
  */
-public class CommonParser {
+public class JsonParser {
     
     private static ObjectMapper mapper = new ObjectMapper();
     
@@ -21,7 +21,7 @@ public class CommonParser {
         try {
             result = mapper.readValue(jsonFile, cls);
         } catch (IOException ex) {
-            Logger.getLogger(CommonParser.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(JsonParser.class.getName()).log(Level.SEVERE, null, ex);
         }
         return result;
     }
@@ -31,7 +31,7 @@ public class CommonParser {
         try {
             result = mapper.readValue(json, cls);
         } catch (IOException ex) {
-            Logger.getLogger(CommonParser.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(JsonParser.class.getName()).log(Level.SEVERE, null, ex);
         }
         return result;
     }
@@ -41,7 +41,7 @@ public class CommonParser {
         try {
             result = mapper.writeValueAsString(obj);
         } catch (IOException ex) {
-            Logger.getLogger(CommonParser.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(JsonParser.class.getName()).log(Level.SEVERE, null, ex);
         }
         return result;
     }
