@@ -8,9 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import org.apache.commons.lang.StringUtils;
 import org.mazb.samplejavafx.app.Context;
-import org.mazb.samplejavafx.model.Menus;
 import org.mazb.samplejavafx.util.RestClient;
 
 /**
@@ -40,9 +38,6 @@ public abstract class CommonController implements Initializable {
         } else {
             currentStage.getScene().setRoot(page);
         }
-        currentStage.setWidth(800);
-        currentStage.setHeight(600);
-        currentStage.centerOnScreen();
         currentStage.show();
         return page;
     }

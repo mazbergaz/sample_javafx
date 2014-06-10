@@ -23,9 +23,18 @@ public class User {
         
     }
     
+    /**
+     * use this to set default value except for username and password, no role.
+     * @param userName
+     * @param password 
+     */
     public User(String userName, String password){
         this.userName = userName;
         this.password = password;
+        this.realName = userName;
+        this.email = userName + "@email.com";
+        this.createdBy = "SYSTEM";
+        this.createdOn = new Date().getTime();
     }
 
     public int getId() {

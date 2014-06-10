@@ -5,6 +5,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.collections.*?> 
+<?import org.mazb.samplejavafx.component.*?> 
 
 <GridPane fx:controller="org.mazb.samplejavafx.controller.subpage.UserShowController" 
           xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
@@ -18,5 +21,35 @@
     </stylesheets>
     
     <Label fx:id="labelPageName" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+    
+    <TableView fx:id="tableUser" GridPane.columnIndex="0" GridPane.rowIndex="3">
+        <columns>
+            <TableColumn text="ID">
+                <cellValueFactory>
+                    <PropertyValueFactory property="id" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Real Name">
+                <cellValueFactory>
+                    <PropertyValueFactory property="realName" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Email Address">
+                <cellValueFactory>
+                    <PropertyValueFactory property="email" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="User Name">
+                <cellValueFactory>
+                    <PropertyValueFactory property="userName" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Password">
+                <cellValueFactory>
+                    <PropertyValueFactory property="password" />
+                </cellValueFactory>
+            </TableColumn>
+        </columns>
+    </TableView>
 
 </GridPane>
