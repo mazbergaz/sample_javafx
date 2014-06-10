@@ -49,9 +49,20 @@ public class UserShowController extends CommonController{
      * @return 
      */
     private List<TableUserProperties> getUsers(){
+//        List<TableUserProperties> users = new ArrayList<TableUserProperties>();
+//        for(int i=0; i<5; i++){
+//            users.add(new TableUserProperties("user"+i, "pass"+i));
+//        }
+//        return users;
+        return getUnuploadedUsers();
+    }
+    
+    private List<TableUserProperties> getUnuploadedUsers(){
         List<TableUserProperties> users = new ArrayList<TableUserProperties>();
-        for(int i=0; i<5; i++){
-            users.add(new TableUserProperties("user"+i, "pass"+i));
+        List<String> userLines = getFileHandler().readUnuploadedFile("user");
+        for(String userLine : userLines){
+            User user = User.fromCsvString(userLine);
+            users.add(new TableUserProperties(user));
         }
         return users;
     }

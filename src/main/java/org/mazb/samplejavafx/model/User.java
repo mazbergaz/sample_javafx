@@ -204,9 +204,9 @@ public class User {
         user.setEmail(props[4]);
         user.setRoleDto(user.getRole(props[5]));
         user.setCreatedBy(props[6]);
-        user.setCreatedOn(Long.parseLong(props[7]));
+        user.setCreatedOn(Long.parseLong(props[7].equals("") ? "0" : props[7]));
         user.setModifiedBy(props[8]);
-        user.setLastModified(Long.parseLong(props[9]));
+        user.setLastModified(Long.parseLong(props[9].equals("") ? "0" : props[9]));
         return user;
     }
     
